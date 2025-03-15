@@ -38,7 +38,46 @@ body {
 }
 
 #game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#board-container {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    gap: 5px;
+    width: max-content;
+    margin: 20px auto;
+    background-color: var(--navy-color);
+    padding: 4px;
+    border-radius: 20px;
+}
+
+.cell {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: var(--magenta-color);
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.1s ease;
+}
+
+.cell:hover {
+    box-shadow: 0 0 5px 6px var(--red-color);
 }
 
 #footer {
