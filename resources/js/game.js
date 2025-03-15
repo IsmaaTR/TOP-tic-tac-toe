@@ -14,10 +14,42 @@ const game = (function(gameBoard) {
         [2, 4, 6]  // Reverse diagonal
     ];
 
-    function playRound(player, index) {
-        const boardStatus = gameBoard.playRound(player.mark, index);
+    const player1 = createPlayer(1, 'Player 1', 'X');
+    const player2 = createPlayer(2, 'Player 2', 'O');
+
+    let currentPlayer = player1;
+
+    init()
+
+    function init() {
+        //Add the event listeners to the cells in the DOM
+        gameBoard.cellsDOM.forEach((cell, index) => {
+            cell.addEventListener('click', () => playRound(index));
+        })
+    }
+
+    function playRound(index) {
+        const boardStatus = gameBoard.playRound(currentPlayer.mark, index);
         const roundResult = checkWinner(boardStatus);
-        return { boardStatus, roundResult };
+        switch (roundResult) {
+            case player1.mark:
+                currentPlayer = player1;
+                player1.addScore();
+                gameBoard.reset();
+                break;
+            case player2.mark:
+                currentPlayer = player1;
+                player2.addScore();
+                gameBoard.reset();
+                break;
+            case "draw":
+                currentPlayer = player1;
+                gameBoard.reset();
+                break;
+            default:
+                currentPlayer === player1 ? currentPlayer = player2 : currentPlayer = player1;
+                break;
+        }
     }
 
     function checkWinner(board) {

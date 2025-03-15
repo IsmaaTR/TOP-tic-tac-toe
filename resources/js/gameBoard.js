@@ -6,6 +6,9 @@ const gameBoard = (function() {
     // The game board
     let gameBoard = new Array(9).fill(null);
 
+    const boardDOM = document.querySelector('#board');
+    const cellsDOM = Array.from(boardDOM.children);
+
     /**
      * Function used to play a round
      * @param {*} mark The mark of a player
@@ -16,6 +19,7 @@ const gameBoard = (function() {
         if (gameBoard[index] == null) {
             gameBoard[index] = mark;
         }
+        render();
         return gameBoard;
     }
 
@@ -24,8 +28,22 @@ const gameBoard = (function() {
      */
     function reset() {
         gameBoard = new Array(9).fill(null);
+        render();
         return gameBoard;
     }
 
-    return { playRound, reset };
+    /**
+     * Renders the actual state of the board
+     */
+    function render() {
+        gameBoard.forEach((value, index) => {
+            value !== null ? cellsDOM[index].textContent = value : cellsDOM[index].textContent = '';
+        });
+    }
+
+    return { playRound, reset,
+        get cellsDOM() {
+            return cellsDOM;
+        }
+     };
 })();

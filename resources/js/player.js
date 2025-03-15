@@ -4,15 +4,17 @@
  * @param {*} mark The player mark (usually X or O)
  * @returns The player created
  */
-function createPlayer(name, mark) {
+function createPlayer(id, name, mark) {
     let score = 0;
-
+    const scoreDOM = document.querySelector(`#player${id}-score`);
     /**
      * Adds 1 to the score and returns it
      * @returns The updated score
      */
     function addScore() {
-        return score++;
+        score++;
+        scoreDOM.textContent = score;
+        return score;
     }
 
     return {

@@ -74,6 +74,8 @@ body {
     cursor: pointer;
     border-radius: 20px;
     transition: all 0.1s ease;
+    font-size: 5rem;
+    color: var(--red-color)
 }
 
 .cell:hover {
