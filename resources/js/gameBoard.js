@@ -16,10 +16,12 @@ const gameBoard = (function() {
      * @returns The gameBoard status or -1 if the move is not allowed
      */
     function playRound(mark, index) {
-        if (gameBoard[index] == null) {
+        if (gameBoard[index] !== null) {
+            return -1;
+        } else {
             gameBoard[index] = mark;
+            render();
         }
-        render();
         return gameBoard;
     }
 

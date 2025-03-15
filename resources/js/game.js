@@ -30,22 +30,24 @@ const game = (function(gameBoard) {
 
     function playRound(index) {
         const boardStatus = gameBoard.playRound(currentPlayer.mark, index);
-        const roundResult = checkWinner(boardStatus);
-        switch (roundResult) {
-            case player1.mark:
-                player1.addScore();
-                gameBoard.reset();
-                break;
-            case player2.mark:
-                player2.addScore();
-                gameBoard.reset();
-                break;
-            case "draw":
-                gameBoard.reset();
-                break;
-            default:
-                currentPlayer = currentPlayer === player1 ? player2 : player1;
-                break;
+        if (boardStatus !== -1) {
+            const roundResult = checkWinner(boardStatus);
+            switch (roundResult) {
+                case player1.mark:
+                    player1.addScore();
+                    gameBoard.reset();
+                    break;
+                case player2.mark:
+                    player2.addScore();
+                    gameBoard.reset();
+                    break;
+                case "draw":
+                    gameBoard.reset();
+                    break;
+                default:
+                    currentPlayer = currentPlayer === player1 ? player2 : player1;
+                    break;
+            }
         }
     }
 
