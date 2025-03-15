@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --red-color: #FF204E;
+    --magenta-color: #A0153E;
+    --purple-color: #5D0E41;
+    --navy-color: #00224D;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Press Start 2P', system-ui;
+    color: white;
+    background-color: var(--magenta-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    margin: 50px
+}
+
+#scores {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#scores p {
+    color: var(--navy-color);
+}
+
+#game-container {
+    flex-grow: 1;
+}
+
+#footer {
+    background-color: var(--brown-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#github-logo {
+    height: 30px;
+    padding-left: 10px;
+}
