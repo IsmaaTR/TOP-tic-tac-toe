@@ -79,7 +79,41 @@ body {
 }
 
 .cell:hover {
+    outline: none;
     box-shadow: 0 0 5px 6px var(--red-color);
+}
+
+#actions-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#reset-btn,
+#submit-player-form {
+    color: var(--red-color);
+    background-color: var(--navy-color);
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: 'Press Start 2P';
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+#reset-btn:hover,
+#submit-player-form:hover {
+    outline: none;
+    box-shadow: 0 0 5px 6px var(--purple-color);
+}
+
+#reset-btn {
+    padding: 20px 50px;
+    font-size: 1.5rem;
+}
+
+#submit-player-form {
+    padding: 10px 25px;
+    font-size: 1rem;
 }
 
 #footer {
@@ -93,4 +127,43 @@ body {
 #github-logo {
     height: 30px;
     padding-left: 10px;
+}
+
+dialog {
+    width: 400px;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-color: var(--navy-color);
+    position: fixed;
+    inset: 50%;
+    transform: translate(-50%, -50%);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#select-player-form label {
+    color: white;
+}
+
+#select-player-form input {
+    border: none;
+    border-bottom: 2px solid var(--red-color);
+    outline: none;
+    background: transparent;
+    padding: 5px 0;
+    font-size: 15px;
+    font-family: 'Press Start 2P';
+    color: white;
+    width: 200px;
+}
+
+.form-row {
+    display: flex;
+    margin: 20px;
+    padding-bottom: 10px;
 }

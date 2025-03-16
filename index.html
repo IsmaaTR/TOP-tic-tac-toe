@@ -14,8 +14,6 @@
     </div>
     <div id="game-container">
         <div id="scores">
-            <p>Player 1: <span id="player1-score">0</span> pts.</p>
-            <p>Player 2: <span id="player2-score">0</span> pts.</p>
         </div>
         <div id="board-container">
             <div id="board">
@@ -37,5 +35,24 @@
             <img id="github-logo" src="resources/img/github-mark.svg" />
         </a>
     </div>
+
+    <!--Select player name dialog-->
+    <dialog id="select-players">
+        <div id="dialog-container">
+            <form action="startGame" id="select-player-form">
+                <div class="form-row">
+                    <label for="player1Name">Player 1 name</label>
+                    <input type="text" name="player1Name" id="player1Name" maxlength="20" required>
+                </div>
+                <div class="form-row">
+                    <label for="player2Name">Player 2 name</label>
+                    <input type="text" name="player2Name" id="player2Name" maxlength="20" required>
+                </div>
+                <div class="form-submit-row">
+                    <button id="submit-player-form" type="submit">Start game</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
 </body>
 </html>

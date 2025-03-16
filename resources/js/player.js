@@ -6,7 +6,22 @@
  */
 function createPlayer(id, name, mark) {
     let score = 0;
-    const scoreDOM = document.querySelector(`#player${id}-score`);
+    let titlesDiv = document.querySelector('#scores');
+    let scoreDOM;
+
+    init();
+
+    /**
+     * Renders the player score and title
+     */
+    function init() {
+        const playerTitle = document.createElement('p');
+        playerTitle.id = `player${id}-title`;
+        playerTitle.innerHTML = `${name}: <span id="player${id}-score">0</span> pts.`;
+        titlesDiv.appendChild(playerTitle);
+        scoreDOM = document.querySelector(`#player${id}-score`);
+    }
+
     /**
      * Adds 1 to the score and returns it
      * @returns The updated score
@@ -17,6 +32,14 @@ function createPlayer(id, name, mark) {
         return score;
     }
 
+    /**
+     * Resets the score to 0
+     */
+    function resetScore() {
+        score = 0;
+        scoreDOM.textContent = score;
+    }
+
     return {
         get name() {
             return name;
@@ -24,6 +47,7 @@ function createPlayer(id, name, mark) {
         get mark() {
             return mark;
         },     
-        addScore 
+        addScore,
+        resetScore 
     };
 }

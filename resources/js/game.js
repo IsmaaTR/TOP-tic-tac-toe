@@ -14,10 +14,12 @@ const game = (function(gameBoard) {
         [2, 4, 6]  // Reverse diagonal
     ];
 
-    const player1 = createPlayer(1, 'Player 1', 'X');
-    const player2 = createPlayer(2, 'Player 2', 'O');
+    let player1;
+    let player2;
+    let currentPlayer;
 
-    let currentPlayer = player1;
+    const modal = document.querySelector('#select-players');
+    const playerForm = document.querySelector('#select-player-form');
 
     init();
 
@@ -26,6 +28,20 @@ const game = (function(gameBoard) {
         gameBoard.cellsDOM.forEach((cell, index) => {
             cell.addEventListener('click', () => playRound(index));
         });
+
+        //Add the event listener to the start game button
+        playerForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const player1Name = document.querySelector('#player1Name').value;
+            const player2Name = document.querySelector('#player2Name').value;
+            player1 = createPlayer(1, player1Name, 'X');
+            player2 = createPlayer(2, player2Name, 'O');
+            currentPlayer = player1;
+            modal.close();
+        });
+
+        //Show the select players modal
+        modal.showModal();
     }
 
     function playRound(index) {
