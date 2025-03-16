@@ -20,6 +20,7 @@ const game = (function(gameBoard) {
 
     const modal = document.querySelector('#select-players');
     const playerForm = document.querySelector('#select-player-form');
+    const resetButton = document.querySelector('#reset-btn');
 
     init();
 
@@ -38,6 +39,13 @@ const game = (function(gameBoard) {
             player2 = createPlayer(2, player2Name, 'O');
             currentPlayer = player1;
             modal.close();
+        });
+
+        //Add the event listener to reset the game
+        resetButton.addEventListener('click', () => {
+            player1.resetScore();
+            player2.resetScore();
+            gameBoard.reset();
         });
 
         //Show the select players modal
